@@ -1,0 +1,1048 @@
+﻿<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AEGIS PROTOCOL: Ebook & Blueprint Pertahanan Siber Tingkat Enterprise Standar NIST SP 800-53 & ISO 27001">
+    <title>AEGIS PROTOCOL: Standar Pertahanan Siber & Anti-Peretasan Internasional</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration Extended -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        cyber: {
+                            base: '#030712',
+                            surface: '#080e1e',
+                            card: '#0d1527',
+                            border: '#1e293b',
+                            neon: '#06b6d4',
+                            emerald: '#10b981',
+                            purple: '#8b5cf6',
+                        }
+                    },
+                    boxShadow: {
+                        'neon-cyan': '0 0 25px -4px rgba(6, 182, 212, 0.4)',
+                        'neon-emerald': '0 0 25px -4px rgba(16, 185, 129, 0.4)',
+                        'neon-hover': '0 0 35px 2px rgba(6, 182, 212, 0.65), 0 0 15px rgba(16, 185, 129, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Cyber Matrix Grid Pattern */
+        .cyber-grid {
+            background-size: 44px 44px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+        .glow-radial-top {
+            background: radial-gradient(circle at 50% -10%, rgba(6, 182, 212, 0.22) 0%, rgba(3, 7, 18, 0) 70%);
+        }
+        .glow-radial-bottom {
+            background: radial-gradient(circle at 50% 110%, rgba(16, 185, 129, 0.18) 0%, rgba(3, 7, 18, 0) 70%);
+        }
+        .glass-panel {
+            background: rgba(13, 21, 39, 0.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        /* Smooth Futuristic Hover Micro-Interactions */
+        .btn-action-primary {
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-action-primary:hover {
+            transform: translateY(-2.5px) scale(1.015);
+            box-shadow: 0 0 35px 4px rgba(6, 182, 212, 0.5), 0 0 15px rgba(16, 185, 129, 0.35);
+            filter: brightness(1.08);
+        }
+        .btn-action-primary:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .btn-action-secondary {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-action-secondary:hover {
+            transform: translateY(-2px);
+            border-color: rgba(6, 182, 212, 0.7);
+            background-color: rgba(14, 165, 233, 0.08);
+            box-shadow: 0 0 20px -3px rgba(6, 182, 212, 0.3);
+            color: #ffffff;
+        }
+        .btn-action-secondary:active {
+            transform: translateY(0) scale(0.98);
+        }
+    </style>
+</head>
+<body class="bg-cyber-base text-slate-200 font-sans antialiased overflow-x-hidden relative selection:bg-cyan-500 selection:text-black">
+
+    <!-- Ambient Grid & Radial Lighting -->
+    <div class="fixed inset-0 cyber-grid pointer-events-none z-0"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] glow-radial-top pointer-events-none z-0"></div>
+    <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[550px] glow-radial-bottom pointer-events-none z-0"></div>
+
+    <!-- ================= 0. TELEMETRY STATUS BANNER ================= -->
+    <div class="relative z-50 bg-gradient-to-r from-cyan-950/90 via-slate-900 to-cyan-950/90 border-b border-cyan-500/20 py-2 px-4 text-xs font-mono text-cyan-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>STATUS PROTOKOL: STANDAR NIST CSF 2.0 & MITRE ATT&CK v14 TERVERIFIKASI RESMI</span>
+            </div>
+            <div class="hidden md:flex items-center gap-4 text-slate-400">
+                <span>ENKRIPSI: <span class="text-emerald-400 font-bold">AES-256-GCM</span></span>
+                <span class="text-slate-600">|</span>
+                <span>INTEGRITY CHECK: PASSED</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= 1. NAVBAR ================= -->
+    <header class="sticky top-0 z-40 backdrop-blur-xl bg-cyber-base/85 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3.5 group">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-cyan-500 via-teal-400 to-emerald-400 p-[1.5px] shadow-neon-cyan transition-transform group-hover:scale-105">
+                        <div class="w-full h-full bg-cyber-base rounded-[10px] flex items-center justify-center">
+                            <i data-lucide="shield-alert" class="w-5 h-5 text-cyan-400"></i>
+                        </div>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-lg font-extrabold tracking-wider font-mono text-white">AEGIS</span>
+                            <span class="text-xs px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 font-mono border border-cyan-500/30 font-semibold">DEFENSE</span>
+                        </div>
+                        <span class="text-[10px] tracking-widest text-slate-400 uppercase font-mono">SecOps Standard</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-7 text-sm font-medium text-slate-300">
+                    <a href="#arsitektur" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+                        <i data-lucide="layers" class="w-4 h-4 text-slate-500"></i> Arsitektur
+                    </a>
+                    <a href="#materi" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+                        <i data-lucide="book-open" class="w-4 h-4 text-slate-500"></i> Silabus
+                    </a>
+                    <a href="#harga" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5 text-cyan-300 font-semibold">
+                        <i data-lucide="tag" class="w-4 h-4 text-cyan-400"></i> Paket & Harga
+                    </a>
+                    <a href="#testimoni" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+                        <i data-lucide="message-square" class="w-4 h-4 text-slate-500"></i> Ulasan
+                    </a>
+                    <a href="#penulis" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+                        <i data-lucide="user-check" class="w-4 h-4 text-slate-500"></i> Dewan Pakar
+                    </a>
+                </nav>
+
+                <!-- Dual Action Header Buttons -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <button onclick="openModal('sample')" class="btn-action-secondary px-4 py-2.5 rounded-xl border border-slate-700 bg-cyber-card text-xs font-mono font-semibold text-slate-300 flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-3.5 h-3.5 text-cyan-400"></i>
+                        Sampel Gratis
+                    </button>
+                    <button onclick="openModal('full')" class="btn-action-primary px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-400 via-emerald-400 to-teal-400 text-slate-950 text-xs font-mono font-bold tracking-wider uppercase flex items-center gap-2 shadow-neon-cyan">
+                        <i data-lucide="download" class="w-3.5 h-3.5 text-slate-950"></i>
+                        Akses Penuh
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex lg:hidden">
+                    <button id="mobile-menu-btn" aria-label="Toggle Menu" class="p-2 rounded-lg bg-cyber-card border border-slate-800 text-slate-400 hover:text-white">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden glass-panel border-b border-slate-800 px-6 py-6 space-y-4">
+            <a href="#arsitektur" class="block text-slate-300 hover:text-cyan-400 text-sm font-medium">Arsitektur Pertahanan</a>
+            <a href="#materi" class="block text-slate-300 hover:text-cyan-400 text-sm font-medium">Silabus Modul (6 Bab)</a>
+            <a href="#harga" class="block text-cyan-300 font-bold hover:text-cyan-400 text-sm">Paket & Harga Ebook</a>
+            <a href="#testimoni" class="block text-slate-300 hover:text-cyan-400 text-sm font-medium">Ulasan Dewan Pakar</a>
+            <a href="#penulis" class="block text-slate-300 hover:text-cyan-400 text-sm font-medium">Profil Penulis</a>
+            <div class="pt-2 flex flex-col gap-2.5">
+                <button onclick="openModal('sample')" class="w-full py-3 px-4 rounded-xl border border-slate-700 bg-cyber-card text-center text-xs font-mono font-bold text-slate-200">
+                    Unduh Sampel Gratis (PDF)
+                </button>
+                <button onclick="openModal('full')" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-400 text-slate-950 font-bold text-xs uppercase font-mono shadow-neon-cyan">
+                    Download Ebook Lengkap
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= 2. HERO SECTION ================= -->
+    <section class="relative pt-12 pb-24 lg:pt-20 lg:pb-32 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 items-center">
+                
+                <!-- Left: Headline & Dual CTA Buttons -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-950/40 text-cyan-300 text-xs font-mono uppercase tracking-wider backdrop-blur-md">
+                        <i data-lucide="shield" class="w-3.5 h-3.5 text-cyan-400"></i>
+                        <span>STANDAR RESMI NIST SP 800-53 & ISO/IEC 27001:2022</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.14]">
+                        Strategi Pertahanan Siber & Mitigasi Serangan 
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400">
+                            Zero-Day Enterprise.
+                        </span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+                        Manual taktis 384 halaman yang dirancang untuk CISO, Threat Hunter, dan Arsitek Keamanan. Panduan implementasi pertahanan berlapis, mitigasi ransomware mutakhir, dan hardening multi-cloud.
+                    </p>
+
+                    <!-- Dual CTA Buttons with Micro-interactions -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <button onclick="openModal('full')" class="btn-action-primary w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-400 via-emerald-400 to-teal-400 text-slate-950 font-extrabold text-sm uppercase tracking-wider rounded-xl shadow-neon-cyan">
+                            <i data-lucide="download-cloud" class="w-5 h-5 text-slate-950"></i>
+                            Download Ebook Sekarang
+                        </button>
+                        
+                        <button onclick="openModal('sample')" class="btn-action-secondary w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl border border-slate-700 bg-cyber-card/90 text-slate-300 hover:text-white text-sm font-semibold">
+                            <i data-lucide="file-check-2" class="w-4 h-4 text-emerald-400"></i>
+                            Download Sampel Gratis (Bab 1–2)
+                        </button>
+                    </div>
+
+                    <!-- Trust Bar Badges -->
+                    <div class="pt-8 border-t border-slate-800/80">
+                        <p class="text-xs font-mono uppercase text-slate-400 tracking-wider mb-4">
+                            Diadopsi Oleh Tim Keamanan Infrastruktur Vital:
+                        </p>
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-8 opacity-80">
+                            <div class="flex items-center gap-2 text-slate-300 font-mono text-xs font-semibold">
+                                <i data-lucide="landmark" class="w-4 h-4 text-cyan-400"></i> Banking & FinTech
+                            </div>
+                            <div class="flex items-center gap-2 text-slate-300 font-mono text-xs font-semibold">
+                                <i data-lucide="radio-tower" class="w-4 h-4 text-emerald-400"></i> Critical Telco
+                            </div>
+                            <div class="flex items-center gap-2 text-slate-300 font-mono text-xs font-semibold">
+                                <i data-lucide="server" class="w-4 h-4 text-purple-400"></i> Cloud Datacenter
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right: High-Tech Holographic Ebook Mockup -->
+                <div class="lg:col-span-5 flex flex-col items-center">
+                    <div class="relative w-full max-w-md group">
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-cyan-500 via-emerald-500 to-indigo-500 rounded-3xl blur-2xl opacity-35 group-hover:opacity-60 transition duration-700"></div>
+                        
+                        <div class="relative rounded-2xl border border-cyan-500/30 glass-panel p-6 shadow-2xl">
+                            
+                            <!-- Telemetry Header -->
+                            <div class="flex justify-between items-center pb-4 border-b border-slate-800 text-xs font-mono">
+                                <span class="flex items-center gap-1.5 text-cyan-400">
+                                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                                    VERSI: 2026.1-RELEASE
+                                </span>
+                                <span class="text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
+                                    PDF • EPUB • ANSIBLE
+                                </span>
+                            </div>
+
+                            <!-- Futuristic Cover Visualizer -->
+                            <div class="my-6 rounded-xl bg-gradient-to-b from-slate-950 via-cyber-surface to-cyber-base border border-slate-800 p-8 flex flex-col items-center justify-center relative overflow-hidden text-center">
+                                <div class="absolute inset-0 bg-[radial-gradient(#06b6d4_1px,transparent_1px)] [background-size:16px_16px] opacity-15"></div>
+                                
+                                <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-cyan-500/20 to-emerald-500/20 border border-cyan-500/40 flex items-center justify-center shadow-neon-cyan mb-4">
+                                    <i data-lucide="lock" class="w-9 h-9 text-cyan-400"></i>
+                                </div>
+
+                                <span class="text-[11px] font-mono tracking-widest text-emerald-400 font-bold uppercase mb-1">
+                                    Standar Internasional
+                                </span>
+                                <h3 class="text-xl font-extrabold text-white font-mono tracking-wide leading-tight">
+                                    AEGIS PROTOCOL: ANTI-PERETASAN DIGITAL
+                                </h3>
+                                <p class="text-xs text-slate-400 mt-2 font-mono">
+                                    Oleh: Ir. Hendra Gunawan, CISSP, CISM, CEH
+                                </p>
+                            </div>
+
+                            <!-- Live Hash Verification Box -->
+                            <div class="bg-cyber-base/80 rounded-xl p-3.5 border border-slate-800 font-mono text-[11px] space-y-2">
+                                <div class="flex items-center justify-between text-slate-400">
+                                    <span>INTEGRITY SHA-256:</span>
+                                    <button onclick="copyHash()" class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1 font-semibold">
+                                        <i data-lucide="copy" class="w-3 h-3"></i> <span id="copy-text">Salin Hash</span>
+                                    </button>
+                                </div>
+                                <div class="p-2 rounded bg-slate-950 text-slate-300 break-all select-all border border-slate-900 text-[10px]">
+                                    e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+                                </div>
+                            </div>
+
+                            <!-- Book Specs Grid -->
+                            <div class="mt-4 pt-4 border-t border-slate-800 grid grid-cols-3 gap-2 text-center font-mono text-xs">
+                                <div class="p-2 rounded bg-slate-900/50">
+                                    <p class="text-slate-400 text-[10px]">HALAMAN</p>
+                                    <p class="text-cyan-400 font-bold">384 Hal</p>
+                                </div>
+                                <div class="p-2 rounded bg-slate-900/50">
+                                    <p class="text-slate-400 text-[10px]">PLAYBOOK</p>
+                                    <p class="text-emerald-400 font-bold">14 Skrip</p>
+                                </div>
+                                <div class="p-2 rounded bg-slate-900/50">
+                                    <p class="text-slate-400 text-[10px]">UPDATE</p>
+                                    <p class="text-purple-400 font-bold">Gratis 1 Thn</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= METRICS & TELEMETRY STRATEGY ================= -->
+    <section id="arsitektur" class="py-16 bg-cyber-surface border-y border-slate-800 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-6 rounded-2xl bg-cyber-card/60 border border-slate-800">
+                    <p class="text-3xl sm:text-4xl font-extrabold font-mono text-cyan-400">99.98%</p>
+                    <p class="text-xs uppercase font-mono text-slate-400 mt-2">Ketahanan Dari Lateral Attack</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-cyber-card/60 border border-slate-800">
+                    <p class="text-3xl sm:text-4xl font-extrabold font-mono text-emerald-400">&lt; 15 Mnt</p>
+                    <p class="text-xs uppercase font-mono text-slate-400 mt-2">Rata-rata Respon Insiden (MTTR)</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-cyber-card/60 border border-slate-800">
+                    <p class="text-3xl sm:text-4xl font-extrabold font-mono text-purple-400">100%</p>
+                    <p class="text-xs uppercase font-mono text-slate-400 mt-2">Kompatibel ISO 27001 & NIST</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-cyber-card/60 border border-slate-800">
+                    <p class="text-3xl sm:text-4xl font-extrabold font-mono text-teal-400">32.800+</p>
+                    <p class="text-xs uppercase font-mono text-slate-400 mt-2">Praktisi & Engineer Membaca</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 3. FITUR UTAMA & SILABUS MATERI ================= -->
+    <section id="materi" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-950/40 text-emerald-400 text-xs font-mono uppercase tracking-wider">
+                    <i data-lucide="layers" class="w-3.5 h-3.5"></i> Kurikulum Lengkap 6 Bab Utama
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                    Silabus Taktis: Panduan Langkah Demi Langkah
+                </h2>
+                <p class="text-slate-400 text-base leading-relaxed">
+                    Setiap modul disusun menggunakan studi kasus penetrasi nyata dan dilengkapi diagram arsitektur enterprise siap pakai.
+                </p>
+            </div>
+
+            <!-- 6 Modules Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Modul 1 -->
+                <div class="glass-panel rounded-2xl border border-slate-800 p-8 hover:border-cyan-500/60 transition-all duration-300 hover:-translate-y-1 relative group">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-950 border border-cyan-500/40 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">Modul 01 • Fondasi Pertahanan</span>
+                    <h3 class="text-xl font-bold text-white mt-1 mb-3">Arsitektur Zero Trust & Micro-Segmentation</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        Penerapan prinsip *Never Trust, Always Verify*. Memutus rantai akses lateral, isolasi segmen server, serta integrasi identitas modern (FIDO2, mTLS, dan SAML).
+                    </p>
+                    <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800/80 pt-4 font-mono">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Segmentasi Software-Defined (SDN)</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Kontrol Akses Berbasis Konteks (ABAC)</li>
+                    </ul>
+                </div>
+
+                <!-- Modul 2 -->
+                <div class="glass-panel rounded-2xl border border-slate-800 p-8 hover:border-emerald-500/60 transition-all duration-300 hover:-translate-y-1 relative group">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-950 border border-emerald-500/40 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="crosshair" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">Modul 02 • Deteksi Dini</span>
+                    <h3 class="text-xl font-bold text-white mt-1 mb-3">Threat Hunting & Zero-Day Neutralization</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        Mendeteksi ancaman tersembunyi yang lolos dari antivirus konvensional. Menggunakan instrumen eBPF kernel, analisis anomali heuristik, dan telemetri SIEM/XDR.
+                    </p>
+                    <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800/80 pt-4 font-mono">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Analisis Memory Dump Volatility</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Deteksi Living-off-the-Land Binaries</li>
+                    </ul>
+                </div>
+
+                <!-- Modul 3 -->
+                <div class="glass-panel rounded-2xl border border-slate-800 p-8 hover:border-purple-500/60 transition-all duration-300 hover:-translate-y-1 relative group">
+                    <div class="w-12 h-12 rounded-xl bg-purple-950 border border-purple-500/40 flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="database-backup" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs font-mono text-purple-400 font-bold uppercase tracking-wider">Modul 03 • Ketahanan Data</span>
+                    <h3 class="text-xl font-bold text-white mt-1 mb-3">Mitigasi Ransomware & Air-Gapped Vault</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        Strategi pemulihan dari pemerasan ganda (*double extortion*). Penguncian *immutable storage* berbasis hardware dan isolasi protokol jaringan saat serangan aktif.
+                    </p>
+                    <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800/80 pt-4 font-mono">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-purple-400"></i> Pola Backup 3-2-1-1-0 Enterprise</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-purple-400"></i> Otomasi Failover Kriptografi</li>
+                    </ul>
+                </div>
+
+                <!-- Modul 4 -->
+                <div class="glass-panel rounded-2xl border border-slate-800 p-8 hover:border-cyan-500/60 transition-all duration-300 hover:-translate-y-1 relative group">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-950 border border-cyan-500/40 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="cloud" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">Modul 04 • Cloud & Container</span>
+                    <h3 class="text-xl font-bold text-white mt-1 mb-3">Kubernetes & Multi-Cloud Hardening</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        Mengamankan arsitektur AWS, Azure, GCP, dan cluster Kubernetes. Audit konfigurasi IAM berisiko tinggi dan pengamanan pipeline CI/CD (DevSecOps).
+                    </p>
+                    <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800/80 pt-4 font-mono">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> CIS Kubernetes Benchmark Checklist</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Supply Chain Vulnerability Prevention</li>
+                    </ul>
+                </div>
+
+                <!-- Modul 5 -->
+                <div class="glass-panel rounded-2xl border border-slate-800 p-8 hover:border-emerald-500/60 transition-all duration-300 hover:-translate-y-1 relative group">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-950 border border-emerald-500/40 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="swords" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">Modul 05 • Simulasi Agresi</span>
+                    <h3 class="text-xl font-bold text-white mt-1 mb-3">Red vs Blue Team: MITRE ATT&CK Mapping</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        Simulasi serangan APT dunia nyata. Memetakan taktik musuh ke matriks MITRE ATT&CK dan melatih respon cepat tim SOC dalam skenario krisis aktual.
+                    </p>
+                    <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800/80 pt-4 font-mono">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Adversary Emulation Playbook</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Metodologi Purple Teaming Defensif</li>
+                    </ul>
+                </div>
+
+                <!-- Modul 6 -->
+                <div class="glass-panel rounded-2xl border border-slate-800 p-8 hover:border-purple-500/60 transition-all duration-300 hover:-translate-y-1 relative group">
+                    <div class="w-12 h-12 rounded-xl bg-purple-950 border border-purple-500/40 flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="scale" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs font-mono text-purple-400 font-bold uppercase tracking-wider">Modul 06 • Forensik & Regulasi</span>
+                    <h3 class="text-xl font-bold text-white mt-1 mb-3">DFIR & Kepatuhan Regulasi Internasional</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        Penanganan insiden forensik digital (*Chain of Custody*), pemulihan pasca insiden, dan pemenuhan regulasi perlindungan data pribadi (UU PDP, GDPR, ISO 27001).
+                    </p>
+                    <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800/80 pt-4 font-mono">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-purple-400"></i> Template Laporan Legal Insiden Resmi</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-purple-400"></i> Standar Anti-Tampering Bukti Digital</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= 4. HARGA DAN PAKET EBOOK (NEW SECTION) ================= -->
+    <section id="harga" class="py-24 bg-cyber-surface/70 border-y border-slate-800 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/40 text-cyan-300 text-xs font-mono uppercase tracking-wider">
+                    <i data-lucide="tag" class="w-3.5 h-3.5 text-cyan-400"></i> Investasi Pengetahuan Sekali Bayar
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                    Pilihan Paket & Lisensi Resmi Ebook
+                </h2>
+                <p class="text-slate-400 text-base leading-relaxed">
+                    Dapatkan akses instan ke seluruh materi, kode skrip hardening, dan pembaruan berkala tanpa biaya langganan bulanan.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- Tier 1: Sampel / Starter -->
+                <div class="glass-panel rounded-3xl border border-slate-800 p-8 flex flex-col justify-between hover:border-slate-700 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-slate-400 uppercase tracking-wider font-semibold">Evaluasi Awal</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Free Tier</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mt-3">Sampel Pratinjau</h3>
+                        <p class="text-xs text-slate-400 mt-2">Bab 1 & 2 lengkap untuk menguji kualitas teknis materi sebelum membeli versi penuh.</p>
+                        
+                        <div class="mt-6 pb-6 border-b border-slate-800">
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-4xl font-extrabold text-white font-mono">Rp 0</span>
+                                <span class="text-xs text-slate-400 font-mono">/ Selamanya</span>
+                            </div>
+                            <p class="text-[11px] text-emerald-400 font-mono mt-1">Akses langsung via email</p>
+                        </div>
+
+                        <ul class="space-y-3 pt-6 text-xs text-slate-300 font-mono">
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                <span>Bab 1: Arsitektur Zero-Trust (45 Hal)</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                <span>Bab 2: Deteksi Zero-Day Dasar</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                <span>Format PDF DRM-Free Resolusi Tinggi</span>
+                            </li>
+                            <li class="flex items-center gap-2.5 text-slate-600">
+                                <i data-lucide="x" class="w-4 h-4 text-slate-700 shrink-0"></i>
+                                <span>Skrip Ansible & Template Terraform</span>
+                            </li>
+                            <li class="flex items-center gap-2.5 text-slate-600">
+                                <i data-lucide="x" class="w-4 h-4 text-slate-700 shrink-0"></i>
+                                <span>Update Silabus Versi 2026/2027</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-8">
+                        <button onclick="openModal('sample')" class="btn-action-secondary w-full py-3.5 px-4 rounded-xl border border-slate-700 bg-cyber-card text-center text-xs font-mono font-bold text-slate-200">
+                            Download Sampel Gratis
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tier 2: Professional Edition (HIGHLIGHTED) -->
+                <div class="glass-panel rounded-3xl border border-cyan-500/50 p-8 flex flex-col justify-between shadow-neon-cyan relative">
+                    <span class="absolute -top-3.5 right-8 px-4 py-1 bg-gradient-to-r from-cyan-400 to-emerald-400 text-slate-950 font-mono text-[11px] uppercase font-extrabold rounded-full tracking-wider shadow-md">
+                        Paling Diminati Praktisi
+                    </span>
+
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider font-semibold">Lisensi Tunggal</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-500/30">Single Seat</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mt-3">Professional SecOps</h3>
+                        <p class="text-xs text-slate-400 mt-2">Paket lengkap seluruh modul, kode skrip otomasi, dan lembar kerja audit mandiri.</p>
+                        
+                        <div class="mt-6 pb-6 border-b border-slate-800">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-4xl font-extrabold text-white font-mono">Rp 499.000</span>
+                                <span class="text-xs text-slate-500 line-through font-mono">Rp 950.000</span>
+                            </div>
+                            <p class="text-[11px] text-cyan-400 font-mono mt-1">Diskon Rilis 47% • Lisensi Seumur Hidup</p>
+                        </div>
+
+                        <ul class="space-y-3 pt-6 text-xs text-slate-200 font-mono">
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+                                <span class="font-semibold text-white">Full Ebook 384 Halaman (Semua 6 Bab)</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+                                <span>Format Lengkap: PDF, EPUB, & Mobipocket</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+                                <span>14 Playbook Ansible & Script Bash Hardening</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+                                <span>Checklist Kepatuhan ISO 27001:2022 (Excel)</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+                                <span>Pembaruan Gratis Versi Digital Selama 1 Tahun</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-8">
+                        <button onclick="openModal('full')" class="btn-action-primary w-full py-4 px-4 rounded-xl bg-gradient-to-r from-cyan-400 via-emerald-400 to-teal-400 text-slate-950 font-extrabold text-xs uppercase font-mono tracking-wider shadow-neon-cyan">
+                            Beli Ebook Sekarang (Akses Penuh)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tier 3: Enterprise Team -->
+                <div class="glass-panel rounded-3xl border border-slate-800 p-8 flex flex-col justify-between hover:border-slate-700 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-purple-400 uppercase tracking-wider font-semibold">Korporasi & Institusi</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-500/30">Multi-Seat (15 Akun)</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mt-3">Enterprise Defense</h3>
+                        <p class="text-xs text-slate-400 mt-2">Dilisensikan untuk tim SOC internal, divisi IT Security perusahaan, dan konsultan forensik.</p>
+                        
+                        <div class="mt-6 pb-6 border-b border-slate-800">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-4xl font-extrabold text-white font-mono">Rp 1.850.000</span>
+                                <span class="text-xs text-slate-500 line-through font-mono">Rp 3.500.000</span>
+                            </div>
+                            <p class="text-[11px] text-purple-400 font-mono mt-1">Faktur Pajak Perusahaan & Invoice Tersedia</p>
+                        </div>
+
+                        <ul class="space-y-3 pt-6 text-xs text-slate-300 font-mono">
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-purple-400 shrink-0"></i>
+                                <span>Lisensi Distribusi Internal hingga 15 Staf</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-purple-400 shrink-0"></i>
+                                <span>Seluruh Skrip Hardening + Hak Modifikasi Bebas</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-purple-400 shrink-0"></i>
+                                <span>Audit Matrix NIST CSF 2.0 Editable Spreadsheet</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-purple-400 shrink-0"></i>
+                                <span>Sesi Q&A Tertulis 30 Hari Bersama Tim Pakar</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-purple-400 shrink-0"></i>
+                                <span>Sertifikat Lisensi Resmi Korporat</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-8">
+                        <button onclick="openModal('enterprise')" class="btn-action-secondary w-full py-3.5 px-4 rounded-xl border border-slate-700 bg-cyber-card text-center text-xs font-mono font-bold text-slate-200">
+                            Pesan Lisensi Tim Enterprise
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Guarantee Note -->
+            <div class="mt-12 text-center text-xs text-slate-400 font-mono flex items-center justify-center gap-4">
+                <span class="flex items-center gap-1.5 text-emerald-400">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i> Garansi Uang Kembali 14 Hari
+                </span>
+                <span class="text-slate-600">•</span>
+                <span>Proses Transaksi Terenkripsi 256-Bit</span>
+                <span class="text-slate-600">•</span>
+                <span>Pengiriman Berkas Instan Otomatis</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= 5. TESTIMONI PEMBACA ================= -->
+    <section id="testimoni" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/40 text-cyan-400 text-xs font-mono uppercase tracking-wider">
+                    <i data-lucide="badge-check" class="w-3.5 h-3.5"></i> Testimoni Praktisi Lapangan
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                    Diakui oleh Praktisi Keamanan Siber Global
+                </h2>
+                <p class="text-slate-400 text-base leading-relaxed">
+                    Ulasan kredibel dari para eksekutif dan teknisi yang memegang kendali atas aset digital jutaan pengguna.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Review 1 -->
+                <div class="glass-panel rounded-2xl border border-slate-800 p-8 flex flex-col justify-between hover:border-slate-700 transition-all">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-1 text-cyan-400">
+                            <i data-lucide="star" class="w-4 h-4 fill-cyan-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-cyan-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-cyan-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-cyan-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-cyan-400"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed italic">
+                            "Buku ini menghilangkan 'kebisingan' teori akademik dan langsung menyajikan blueprint teknis yang dapat dieksekusi. Skrip mitigasi ransomware di Bab 3 langsung kami terapkan pada cluster datacenter utama kami."
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-slate-800 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-bold text-slate-950 font-mono">
+                            BW
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">Bambang Wijaya, CISSP</h4>
+                            <p class="text-xs text-cyan-400 font-mono">Head of InfoSec • Bank Swasta Nasional</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 (Highlighted) -->
+                <div class="glass-panel rounded-2xl border border-cyan-500/50 p-8 flex flex-col justify-between shadow-neon-cyan relative">
+                    <span class="absolute -top-3.5 right-6 px-3.5 py-1 bg-gradient-to-r from-cyan-500 to-emerald-400 text-slate-950 font-mono text-[10px] uppercase font-bold rounded-full tracking-wider">
+                        Rekomendasi Utama
+                    </span>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-1 text-cyan-400">
+                            <i data-lucide="star" class="w-4 h-4 fill-cyan-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-cyan-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-cyan-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-cyan-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-cyan-400"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed italic">
+                            "Sangat jarang menemukan buku siber berbahasa Indonesia dengan kedalaman teknis sekaliber kurikulum SANS Institute. Seluruh CISO wajib menjadikan panduan ini sebagai standar operasional tim SOC mereka."
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-slate-800 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-emerald-400 to-teal-600 flex items-center justify-center font-bold text-slate-950 font-mono">
+                            SN
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">drg. Silvia Nindita, CISM</h4>
+                            <p class="text-xs text-emerald-400 font-mono">CISO • FinTech Unicorn</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="glass-panel rounded-2xl border border-slate-800 p-8 flex flex-col justify-between hover:border-slate-700 transition-all">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-1 text-cyan-400">
+                            <i data-lucide="star" class="w-4 h-4 fill-cyan-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-cyan-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-cyan-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-cyan-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-cyan-400"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed italic">
+                            "Pendekatan Kubernetes Hardening dan Container Isolation di Bab 4 sangat aplikatif. Kami berhasil menambal 3 temuan kritis saat audit kepatuhan ISO 27001 berkat checklist buku ini."
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-slate-800 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-purple-500 to-pink-600 flex items-center justify-center font-bold text-slate-950 font-mono">
+                            DK
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">Dimas Kurniawan, CEH</h4>
+                            <p class="text-xs text-purple-400 font-mono">Principal Cloud Security Architect</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CONVERSION BOX SECTION ================= -->
+    <section class="py-20 relative z-10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="rounded-3xl border border-cyan-500/40 bg-gradient-to-b from-cyan-950/30 via-cyber-card to-cyber-base p-8 sm:p-14 text-center relative overflow-hidden shadow-neon-cyan">
+                
+                <div class="relative z-10 max-w-2xl mx-auto space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/30 text-cyan-300 text-xs font-mono">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> SISTEM DISTRIBUSI DIGITAL TERENKRIPSI
+                    </div>
+
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                        Tingkatkan Ketahanan Aset Digital Anda Mulai Detik Ini
+                    </h2>
+
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
+                        Unduh salinan resmi edisi 2026. Termasuk lampiran checklist audit mandiri, diagram topologi jaringan, dan koleksi skrip hardening siap pakai.
+                    </p>
+
+                    <div class="pt-4 flex flex-col sm:flex-row justify-center gap-3">
+                        <button onclick="openModal('full')" class="btn-action-primary px-8 py-4 bg-gradient-to-r from-cyan-400 via-emerald-400 to-cyan-400 text-slate-950 font-bold text-sm uppercase tracking-wider rounded-xl shadow-neon-cyan">
+                            Download Ebook Lengkap (384 Hlm)
+                        </button>
+                        <button onclick="openModal('sample')" class="btn-action-secondary px-6 py-4 rounded-xl border border-slate-700 bg-slate-900 text-slate-300 text-sm font-semibold">
+                            Unduh Sampel Bab 1 & 2
+                        </button>
+                    </div>
+
+                    <p class="text-[11px] text-slate-500 font-mono pt-2">
+                        *Tautan unduhan dan lisensi dikirimkan secara otomatis ke email Anda setelah verifikasi.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 6. FOOTER AHLI SENIOR PROFESIONAL ================= -->
+    <footer id="penulis" class="bg-black border-t border-slate-800 pt-20 pb-12 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Author Biography & Authority -->
+            <div class="p-8 sm:p-10 rounded-2xl bg-cyber-card/70 border border-slate-800 mb-16">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <div class="lg:col-span-3 flex flex-col items-center text-center sm:flex-row sm:text-left lg:flex-col lg:text-center gap-4">
+                        <div class="w-28 h-28 rounded-2xl bg-gradient-to-tr from-cyan-500 via-emerald-400 to-purple-600 p-1 shadow-neon-cyan">
+                            <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center font-mono text-2xl font-bold text-cyan-400">
+                                HG
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Ir. Hendra Gunawan</h3>
+                            <p class="text-xs font-mono text-cyan-400">M.Sc., CISSP, CISM, CEH, CCISO</p>
+                            <span class="inline-block mt-2 px-2 py-0.5 rounded bg-emerald-950 border border-emerald-500/40 text-[10px] font-mono text-emerald-400">
+                                18+ Thn Pengalaman Pertahanan Siber
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-9 space-y-4">
+                        <h4 class="text-sm font-mono uppercase tracking-wider text-slate-400 font-bold">
+                            Tentang Penulis Utama & Kepala Dewan Riset
+                        </h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Ir. Hendra Gunawan adalah konsultan pertahanan siber strategis untuk perbankan tier-1 dan infrastruktur informasi vital nasional. Telah memimpin penanganan forensik digital pada lebih dari 40 insiden intrusi siber tingkat tinggi di tingkat Asia Tenggara. Berperan aktif sebagai penyusun kerangka kerja adopsi NIST CSF dan rutin menjadi pembicara dalam forum keamanan siber internasional.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-4 pt-2 text-xs font-mono text-slate-400">
+                            <span class="flex items-center gap-1.5 text-cyan-400">
+                                <i data-lucide="shield" class="w-4 h-4"></i> Dewan Pengawas ISC² Chapter
+                            </span>
+                            <span class="flex items-center gap-1.5 text-emerald-400">
+                                <i data-lucide="award" class="w-4 h-4"></i> Fellow di EC-Council Global
+                            </span>
+                            <span class="flex items-center gap-1.5 text-purple-400">
+                                <i data-lucide="cpu" class="w-4 h-4"></i> Komite Standardisasi ISO/IEC 27001
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Frameworks & Navigation Footer -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-slate-800">
+                
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-cyan-400"></i>
+                        <span class="font-mono font-bold text-white tracking-wider text-base">AEGIS DEFENSE INITIATIVE</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed pr-6">
+                        Inisiatif riset independen yang didedikasikan untuk memajukan standar perlindungan data dan ketahanan sistem komputasi terhadap kejahatan terorganisir lintas batas.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-3 space-y-3">
+                    <p class="text-xs font-mono font-bold text-white uppercase tracking-wider">Metodologi & Acuan</p>
+                    <ul class="space-y-2 text-xs font-mono text-slate-400">
+                        <li class="flex items-center gap-2 hover:text-cyan-400 transition-colors">
+                            <i data-lucide="chevron-right" class="w-3 h-3 text-cyan-400"></i> NIST CSF 2.0 Framework
+                        </li>
+                        <li class="flex items-center gap-2 hover:text-cyan-400 transition-colors">
+                            <i data-lucide="chevron-right" class="w-3 h-3 text-cyan-400"></i> ISO/IEC 27001:2022 Controls
+                        </li>
+                        <li class="flex items-center gap-2 hover:text-cyan-400 transition-colors">
+                            <i data-lucide="chevron-right" class="w-3 h-3 text-cyan-400"></i> MITRE ATT&CK Matrix v14
+                        </li>
+                        <li class="flex items-center gap-2 hover:text-cyan-400 transition-colors">
+                            <i data-lucide="chevron-right" class="w-3 h-3 text-cyan-400"></i> CIS Critical Controls v8
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-4 space-y-3">
+                    <p class="text-xs font-mono font-bold text-white uppercase tracking-wider">Verifikasi Integritas File</p>
+                    <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-[11px] font-mono text-slate-400 space-y-2">
+                        <p class="text-emerald-400 flex items-center gap-1.5">
+                            <i data-lucide="lock" class="w-3.5 h-3.5"></i> PGP Signature Key Verified
+                        </p>
+                        <p class="text-slate-500 break-all">Fingerprint: 8F2B 49C1 55E0 99A2 344F 1009 CA8E 7712 BD99 010F</p>
+                        <p class="text-[10px] text-slate-600">Audit Status: Valid & Compliant</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Copyright & Legal -->
+            <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
+                <p>&copy; 2026 AEGIS Protocol • Seluruh Hak Cipta Dilindungi Undang-Undang.</p>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="hover:text-slate-400 transition-colors">Etika White-Hat Hacking</a>
+                    <a href="#" class="hover:text-slate-400 transition-colors">Kebijakan Kerahasiaan</a>
+                    <a href="#" class="hover:text-slate-400 transition-colors">Program Pengungkapan Celah (VDP)</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- ================= DUAL MODAL DOWNLOAD (SAMPEL & FULL ACCESS) ================= -->
+    <div id="download-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="relative w-full max-w-lg rounded-3xl border border-cyan-500/40 glass-panel p-6 sm:p-8 shadow-2xl">
+            
+            <button onclick="closeModal()" aria-label="Tutup Dialog" class="absolute top-5 right-5 p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="space-y-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-mono">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> 
+                    <span id="modal-badge">PENGIRIMAN DIGITAL INSTAN</span>
+                </div>
+                
+                <h3 id="modal-title" class="text-2xl font-bold text-white">Unduh Ebook & Toolkit Lengkap</h3>
+                <p id="modal-desc" class="text-xs text-slate-300 leading-relaxed font-light">
+                    Kirimkan link unduhan instan langsung ke email Anda. Berisi PDF resolusi tinggi, EPUB, dan 14 skrip hardening.
+                </p>
+
+                <form onsubmit="handleDownloadSubmit(event)" class="space-y-4 pt-2">
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-slate-400 mb-1.5">Nama Lengkap</label>
+                        <input type="text" required placeholder="Contoh: Arya Pratama, S.Kom." 
+                               class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-slate-400 mb-1.5">Email Korporat / Pribadi</label>
+                        <input type="email" required placeholder="nama@perusahaan.com" 
+                               class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-slate-400 mb-1.5">Peran / Posisi Pekerjaan</label>
+                        <select class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 text-sm focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400">
+                            <option>CISO / Security Director</option>
+                            <option>Security Engineer / Threat Hunter</option>
+                            <option>Penetration Tester / Red Teamer</option>
+                            <option>DevOps / Cloud Administrator</option>
+                            <option>IT Auditor / Compliance Officer</option>
+                            <option>Mahasiswa / Peneliti Independen</option>
+                        </select>
+                    </div>
+
+                    <div class="pt-2">
+                        <button type="submit" id="btn-submit" class="btn-action-primary w-full py-4 rounded-xl bg-gradient-to-r from-cyan-400 via-emerald-400 to-cyan-400 text-slate-950 font-extrabold text-sm uppercase tracking-wider shadow-neon-cyan">
+                            Konfirmasi & Kirim Tautan Unduh
+                        </button>
+                    </div>
+                </form>
+
+                <p class="text-[10px] text-center text-slate-500 font-mono">
+                    Privasi terjamin. Bebas spam dan sesuai standar ISO/IEC 27701.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
+    <script>
+        // Render Icons
+        lucide.createIcons();
+
+        // Responsive Mobile Menu Handler
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Modal Handlers with Dynamic Content (Sample vs Full Access)
+        const modal = document.getElementById('download-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalBadge = document.getElementById('modal-badge');
+        const btnSubmit = document.getElementById('btn-submit');
+
+        function openModal(mode = 'full') {
+            if (mode === 'sample') {
+                modalBadge.innerText = 'SAMPEL GRATIS (BAB 1–2)';
+                modalTitle.innerText = 'Unduh Sampel Gratis (PDF)';
+                modalDesc.innerText = 'Dapatkan pratinjau 45 halaman Bab 1 (Arsitektur Zero Trust) dan Bab 2 (Threat Hunting) langsung ke email Anda.';
+                btnSubmit.innerText = 'Kirim Sampel Gratis Sekarang';
+            } else if (mode === 'enterprise') {
+                modalBadge.innerText = 'INQUIRY LISENSI KORPORAT';
+                modalTitle.innerText = 'Pemesanan Lisensi Tim Enterprise';
+                modalDesc.innerText = 'Tim kami akan mengirimkan invoice resmi, draft perjanjian lisensi multi-user, dan tautan akses paket.';
+                btnSubmit.innerText = 'Kirim Formulir Lisensi Korporat';
+            } else {
+                modalBadge.innerText = 'AKSES LENGKAP SEUMUR HIDUP';
+                modalTitle.innerText = 'Dapatkan Ebook Lengkap & 14 Skrip';
+                modalDesc.innerText = 'Akses instan seluruh 6 Bab (384 Halaman), playbook Ansible, checklist ISO 27001, serta update berkala.';
+                btnSubmit.innerText = 'Konfirmasi & Lanjutkan Pembelian';
+            }
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on backdrop click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Close on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        // Simulated Submission with Visual Feedback
+        function handleDownloadSubmit(e) {
+            e.preventDefault();
+            const originalText = btnSubmit.innerText;
+            btnSubmit.innerHTML = '<span class="inline-block animate-spin mr-2">⟳</span> Memverifikasi & Mengirim Tautan...';
+            btnSubmit.disabled = true;
+
+            setTimeout(() => {
+                alert('Berhasil! Tautan berkas aman dan instruksi akses telah dikirimkan ke email Anda.');
+                btnSubmit.innerHTML = originalText;
+                btnSubmit.disabled = false;
+                closeModal();
+            }, 1200);
+        }
+
+        // Copy Hash Checksum
+        function copyHash() {
+            const hash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+            navigator.clipboard.writeText(hash).then(() => {
+                const label = document.getElementById('copy-text');
+                label.innerText = 'Tersalin!';
+                label.classList.add('text-emerald-400');
+                setTimeout(() => {
+                    label.innerText = 'Salin Hash';
+                    label.classList.remove('text-emerald-400');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
